@@ -1,10 +1,17 @@
-import { CallBusiness } from "../../src/business/call_business";
-import { ERROR_INVALID_USER_LENGTH, ERROR_USER_NOT_FOUND } from "../../src/business/errors";
-import { callCommandDb } from "../../src/infrastructure/call_command";
-import { channelEventService } from "../../src/infrastructure/channel_event_service";
-import { userCommandDb } from "../../src/infrastructure/user_command";
+import { CallBusiness } from "./call_business";
+import { ERROR_INVALID_USER_LENGTH, ERROR_USER_NOT_FOUND } from "./errors";
+import { callCommandDb } from "../infrastructure/call_command";
+import { channelEventService } from "../infrastructure/channel_event_service";
+import { userCommandDb } from "../infrastructure/user_command";
 
+// TODO: Review and update tests
+/*
+    How to mock:
 
+    - Example mocking userCommandDb.getUserStatus(.....)
+    const getUserStatusMock = jest.spyOn(userCommandDb, "getUserStatus");
+    getUserStatusMock.mockImplementation(() => Promise.resolve([])); => mock return with empty values
+*/
 
 describe("CallBusiness startCall", () => {
 
@@ -27,6 +34,7 @@ describe("CallBusiness startCall", () => {
         {from: "userA", to:"invalidB"},
         {from: "invalidA", to:"invalidB"},
     ])("when users are invalid Should throw an error", async ({from, to}) => {
+
         await expect(callBusiness.startCall(from, to)).rejects.toThrow(ERROR_USER_NOT_FOUND);
     })
 

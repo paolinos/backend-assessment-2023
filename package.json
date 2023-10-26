@@ -35,11 +35,10 @@
     "resetModules": true,
     "restoreMocks": true,
     "testMatch": [
-      "**/tests/**/*.test.ts"
+      "**/*.test.ts"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/src/",
       "/coverage",
       "/dist/"
     ],
