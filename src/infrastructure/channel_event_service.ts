@@ -20,6 +20,14 @@ export interface IChannelEventService {
 
 };
 
+
+
+
+
+
+
+
+
 class ChannelEventService implements IChannelEventService {
 
     private readonly _data:ChannelData[];

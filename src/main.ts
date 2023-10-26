@@ -5,7 +5,7 @@ import { userCommandDb } from "./infrastructure/user_command";
 
 
 const main = async ():Promise<void> => {
-    console.log("log app");
+    console.log("main running");
 
 
     const call = new CallBusiness(

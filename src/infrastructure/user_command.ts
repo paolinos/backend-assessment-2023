@@ -15,6 +15,14 @@ export interface IUserCommandDb {
     setUserStatus(user:string, status:USER_STATUS):Promise<void>
 }
 
+
+
+
+
+
+
+
+
 class UserCommandDb implements IUserCommandDb {
 
     private readonly _data:UserDetails[];

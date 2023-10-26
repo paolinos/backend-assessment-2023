@@ -15,6 +15,15 @@ export interface ICallCommandDb {
     saveUserInCall(channelId:string, from:UserToken, to:UserToken[]):Promise<void>
 }
 
+
+
+
+
+
+
+
+
+
 class CallCommandDb implements ICallCommandDb {
 
     private readonly _data:ChannelDetails[];
