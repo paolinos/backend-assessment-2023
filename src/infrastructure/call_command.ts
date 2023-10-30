@@ -1,3 +1,4 @@
+
 type ChannelDetails = {
     channelId:string;
     from:UserToken; 
@@ -11,19 +12,24 @@ export class UserToken {
     ){}
 }
 
+/**
+ * a database abstraction for Call
+ */
 export interface ICallCommandDb {
-    saveUserInCall(channelId:string, from:UserToken, to:UserToken[]):Promise<void>
+
+    /**
+     * Set users in call.
+     * @param {string} channelId 
+     * @param {UserToken} from 
+     * @param {UserToken[]} to 
+     */
+    setUsersInCall(channelId:string, from:UserToken, to:UserToken[]):Promise<void>
+
 }
 
-
-
-
-
-
-
-
-
-
+/**
+ * WARN: CallCommandDb is just an example BUT NOT REAL implementation.
+ */
 class CallCommandDb implements ICallCommandDb {
 
     private readonly _data:ChannelDetails[];
@@ -32,7 +38,7 @@ class CallCommandDb implements ICallCommandDb {
     }
 
 
-    async saveUserInCall(channelId: string, from: UserToken, to: UserToken[]): Promise<void> {
+    async setUsersInCall(channelId: string, from: UserToken, to: UserToken[]): Promise<void> {
 
         this._data.push({
             channelId,
@@ -43,4 +49,5 @@ class CallCommandDb implements ICallCommandDb {
     }
 
 }
+
 export const callCommandDb:ICallCommandDb = new CallCommandDb();

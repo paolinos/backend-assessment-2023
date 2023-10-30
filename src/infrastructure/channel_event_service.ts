@@ -4,7 +4,6 @@ export type CreateChannelResponse = {
     serverUrl:string;
 }
 
-
 type ChannelData = CreateChannelResponse & {
     users?:{
         from: string,
@@ -13,21 +12,27 @@ type ChannelData = CreateChannelResponse & {
     }
 }
 
-
+/**
+ * a Channel Event service.
+ */
 export interface IChannelEventService {
-
+    
+    /**
+     * Send event to assign users to channel
+     * @param {string} from username that start the call
+     * @param {string[]} to others users in the call 
+     * 
+     * @returns {Promise<CreateChannelResponse|undefined>} if not channel available return undefined
+     */
     setUserToChannel(from:string, to:string[]):Promise<CreateChannelResponse|undefined>;
 
 };
 
 
 
-
-
-
-
-
-
+/**
+ * WARN: ChannelEventService is just an example BUT NOT REAL implementation.
+ */
 class ChannelEventService implements IChannelEventService {
 
     private readonly _data:ChannelData[];
@@ -57,6 +62,5 @@ class ChannelEventService implements IChannelEventService {
         return undefined;
     }   
 }
-
 
 export const channelEventService:IChannelEventService = new ChannelEventService();

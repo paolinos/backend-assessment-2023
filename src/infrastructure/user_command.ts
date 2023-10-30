@@ -9,20 +9,32 @@ export type UserDetails = {
     status:USER_STATUS;
 }
 
+/**
+ * a database abstraction for User
+ */
 export interface IUserCommandDb {
+
+    /**
+     * Get all users and return the user that exist. if not user exist will return an empty array.
+     * @param {string[]} users list of usernames to find
+     * @returns {Promise<UserDetails[]>} return all users or empty string
+     */
     getUserStatus(users:string[]):Promise<UserDetails[]>;
 
+    /**
+     * Set user status.
+     * @param {string} user username
+     * @param {USER_STATUS} status status to save
+     */
     setUserStatus(user:string, status:USER_STATUS):Promise<void>
+
 }
 
 
 
-
-
-
-
-
-
+/**
+ * WARN: UserCommandDb is just an example BUT NOT REAL implementation.
+ */
 class UserCommandDb implements IUserCommandDb {
 
     private readonly _data:UserDetails[];
